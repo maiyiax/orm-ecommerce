@@ -10,6 +10,29 @@ class Product extends Model {}
 Product.init(
   {
     // define columns
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    produce_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      is: /^\$(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$/i
+    },
+    stock: {
+
+    },
+    tagIds: {
+
+    }
+
   },
   {
     sequelize,
