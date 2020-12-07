@@ -6,6 +6,7 @@
 - Take a working Express.js API and configure it to use Sequelize to interact with a MySQL database
 
 [Video Link on Categories/Products endpoints](https://drive.google.com/file/d/1A_7LfO0iIEJHKQCPqChaKgxVryzopHAn/view)
+<br>
 [Video Link on Tags endpoints](https://drive.google.com/file/d/1y1cyzQfrQYFLvrRc73O-nygvZNCVVw6A/view)
 
 ## User Story
@@ -32,7 +33,9 @@ You will have to update the mysql username in pw in connection.js in order to ru
 Using the various endpoints, you can retrieve information about all the categories, products and tags within the database.
 
 ![](./assets/images/allCategories.PNG)
+<br>
 ![](./assets/images/allProducts.PNG)
+<br>
 ![]{./assets/images/allTags.PNG}
 
 Data can also be retrieved for each by running a search by id. There are also endpoints built to create new categories/products/tags, make updates or make deletions out of the database.
