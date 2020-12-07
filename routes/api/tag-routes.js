@@ -87,6 +87,10 @@ router.delete('/:id', (req, res) => {
       return;
     }
     res.json(dbTagData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(400).json(err);
   });
 });
 
