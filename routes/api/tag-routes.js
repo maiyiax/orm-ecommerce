@@ -7,6 +7,13 @@ router.get('/', (req, res) => {
   // find all tags
   Tag.findAll({
     // be sure to include its associated Product data
+    include: [
+      {
+        model: Product,
+        through: ProductTag,
+        as: 'products'
+      }
+    ]
   })
     .then(dbTagData => res.json(dbTagData))
     .catch(err => {
@@ -20,8 +27,15 @@ router.get('/:id', (req, res) => {
   Tag.findOne({
     where: {
       id: req.params.id
-    }
+    },
     // be sure to include its associated Product data
+    include: [
+      {
+        model: Product,
+        through: ProductTag,
+        as: 'products'
+      }
+    ]
   })
     .then(dbTagData => {
       if (!dbTagData) {
@@ -48,21 +62,15 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
-  Tag.update({
+  Tag.update(req.body, {
     where: {
       id: req.params.id
     }
   })
-    .then(dbTagData => {
-      if (!dbTagData) {
-        res.status(404).json({ message: 'No Tag found with this id' });
-        return;
-      }
-      res.json(dbTagData);
-    })
+    .then((updatedTagData) => res.json(updatedTagData))
     .catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json(err);
     });
 });
 
